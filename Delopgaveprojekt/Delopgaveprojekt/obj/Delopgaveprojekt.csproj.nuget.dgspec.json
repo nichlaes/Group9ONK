@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Nichl\\OneDrive\\Dokumenter\\IKT\\ONK\\Group9ONK\\Delopgaveprojekt\\Delopgaveprojekt\\Delopgaveprojekt.csproj": {}
+    "C:\\Git\\Group9ONK\\Delopgaveprojekt\\Delopgaveprojekt\\Delopgaveprojekt.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Nichl\\OneDrive\\Dokumenter\\IKT\\ONK\\Group9ONK\\Delopgaveprojekt\\Delopgaveprojekt\\Delopgaveprojekt.csproj": {
+    "C:\\Git\\Group9ONK\\Delopgaveprojekt\\Delopgaveprojekt\\Delopgaveprojekt.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nichl\\OneDrive\\Dokumenter\\IKT\\ONK\\Group9ONK\\Delopgaveprojekt\\Delopgaveprojekt\\Delopgaveprojekt.csproj",
+        "projectUniqueName": "C:\\Git\\Group9ONK\\Delopgaveprojekt\\Delopgaveprojekt\\Delopgaveprojekt.csproj",
         "projectName": "Delopgaveprojekt",
-        "projectPath": "C:\\Users\\Nichl\\OneDrive\\Dokumenter\\IKT\\ONK\\Group9ONK\\Delopgaveprojekt\\Delopgaveprojekt\\Delopgaveprojekt.csproj",
-        "packagesPath": "C:\\Users\\Nichl\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nichl\\OneDrive\\Dokumenter\\IKT\\ONK\\Group9ONK\\Delopgaveprojekt\\Delopgaveprojekt\\obj\\",
+        "projectPath": "C:\\Git\\Group9ONK\\Delopgaveprojekt\\Delopgaveprojekt\\Delopgaveprojekt.csproj",
+        "packagesPath": "C:\\Users\\Tobias\\.nuget\\packages\\",
+        "outputPath": "C:\\Git\\Group9ONK\\Delopgaveprojekt\\Delopgaveprojekt\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Nichl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Tobias\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,6 +40,12 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "NPoco": {
+              "target": "Package",
+              "version": "[4.0.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

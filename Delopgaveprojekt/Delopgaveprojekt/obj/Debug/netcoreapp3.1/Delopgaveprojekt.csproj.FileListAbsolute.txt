@@ -1,0 +1,10 @@
+C:\Git\Group9ONK\Delopgaveprojekt\Delopgaveprojekt\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Git\Group9ONK\Delopgaveprojekt\Delopgaveprojekt\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Git\Group9ONK\Delopgaveprojekt\Delopgaveprojekt\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+C:\Git\Group9ONK\Delopgaveprojekt\Delopgaveprojekt\bin\Debug\netcoreapp3.1\Delopgaveprojekt.exe
+C:\Git\Group9ONK\Delopgaveprojekt\Delopgaveprojekt\obj\Debug\netcoreapp3.1\Delopgaveprojekt.csprojAssemblyReference.cache
+C:\Git\Group9ONK\Delopgaveprojekt\Delopgaveprojekt\obj\Debug\netcoreapp3.1\staticwebassets\Delopgaveprojekt.StaticWebAssets.Manifest.cache
+C:\Git\Group9ONK\Delopgaveprojekt\Delopgaveprojekt\obj\Debug\netcoreapp3.1\staticwebassets\Delopgaveprojekt.StaticWebAssets.xml
+C:\Git\Group9ONK\Delopgaveprojekt\Delopgaveprojekt\obj\Debug\netcoreapp3.1\Delopgaveprojekt.AssemblyInfoInputs.cache
+C:\Git\Group9ONK\Delopgaveprojekt\Delopgaveprojekt\obj\Debug\netcoreapp3.1\Delopgaveprojekt.AssemblyInfo.cs
+C:\Git\Group9ONK\Delopgaveprojekt\Delopgaveprojekt\obj\Debug\netcoreapp3.1\Delopgaveprojekt.RazorTargetAssemblyInfo.cache
