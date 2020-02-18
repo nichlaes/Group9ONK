@@ -1,4 +1,5 @@
-﻿using Delopgaveprojekt.Controllers.Models;
+﻿using Delopgaveprojekt.DbFactory;
+using Delopgaveprojekt.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,29 +9,69 @@ namespace Delopgaveprojekt.Repositories
 {
     public class VaerktoejskasseRepository : IVaerktoejskasseRepository
     {
+        private const string tableName = "";
+        private readonly IDbFactory _dbFactory;
+
+        public VaerktoejskasseRepository(IDbFactory dbFactory)
+        {
+            _dbFactory = dbFactory;
+        }
         public void AddVaerktoejskasse(Vaerktoejskasse vaerktoejskasse)
         {
-            throw new NotImplementedException();
+            if (vaerktoejskasse != null)
+            {
+                using (var db = _dbFactory.GetConnection())
+                {
+                    db.OpenSharedConnection();
+                    db.Insert<Vaerktoejskasse>(vaerktoejskasse);
+                }
+            }
         }
 
         public void DeleteVaerktoejskasse(int id)
         {
-            throw new NotImplementedException();
+            if (id != 0)
+            {
+                using (var db = _dbFactory.GetConnection())
+                {
+                    db.OpenSharedConnection();
+                    db.Delete<Vaerktoejskasse>(@"DELETE * FROM @0 WHERE VTKId= @1", tableName, id);
+                }
+            }
         }
 
-        public VaerktoejskasseRepository GetById(int id)
+        public Vaerktoejskasse GetById(int id)
         {
-            throw new NotImplementedException();
+            if (id != 0)
+            {
+                using (var db = _dbFactory.GetConnection())
+                {
+                    db.OpenSharedConnection();
+                    return db.FirstOrDefault<Vaerktoejskasse>(@"SELECT * FROM @0 WHERE VTKId= @1", tableName, id);
+                }
+            }
+            return null;
         }
 
-        public List<VaerktoejskasseRepository> GetVaerktoejskasses()
+        public List<Vaerktoejskasse> GetVaerktoejskasses()
         {
-            throw new NotImplementedException();
+            using (var db = _dbFactory.GetConnection())
+            {
+                db.OpenSharedConnection();
+                return db.Fetch<Vaerktoejskasse>(@"SELECT * FROM @0 ORDER BY VTKAnskaffet DESC", tableName);
+            }
         }
 
         public void UpdateVaerktoejskasse(Vaerktoejskasse vaerktoejskasse)
         {
-            throw new NotImplementedException();
+            if (vaerktoejskasse != null)
+            {
+                using (var db = _dbFactory.GetConnection())
+                {
+                    db.OpenSharedConnection();
+                    db.Update<Vaerktoejskasse>(tableName, "VTKId", vaerktoejskasse);
+                }
+            }
         }
     }
 }

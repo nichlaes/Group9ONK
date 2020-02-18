@@ -1,4 +1,4 @@
-﻿using Delopgaveprojekt.Controllers.Models;
+﻿using Delopgaveprojekt.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +9,8 @@ namespace Delopgaveprojekt.Repositories
     interface IVaerktoejskasseRepository
     {
         void AddVaerktoejskasse(Vaerktoejskasse vaerktoejskasse);
-        List<VaerktoejskasseRepository> GetVaerktoejskasses();
-        VaerktoejskasseRepository GetById(int id);
+        List<Vaerktoejskasse> GetVaerktoejskasses();
+        Vaerktoejskasse GetById(int id);
         void UpdateVaerktoejskasse(Vaerktoejskasse vaerktoejskasse);
         void DeleteVaerktoejskasse(int id);
     }
