@@ -1,11 +1,10 @@
-﻿using Delopgaveprojekt.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Delopgaveprojekt.Controllers.Models
+namespace Delopgaveprojekt.Models
 {
     public partial class Vaerktoejskasse
     {

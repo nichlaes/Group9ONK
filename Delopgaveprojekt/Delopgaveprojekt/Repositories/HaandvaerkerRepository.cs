@@ -9,7 +9,7 @@ namespace Delopgaveprojekt.Repositories
 {
     public class HaandvaerkerRepository : IHaandvaerkerRepository
     {
-        private const string dbo = "";
+        private const string tableName = "";
         private readonly IDbFactory _dbFactory;
 
         public HaandvaerkerRepository(IDbFactory dbFactory)
@@ -34,7 +34,7 @@ namespace Delopgaveprojekt.Repositories
                 using (var db = _dbFactory.GetConnection())
                 {
                     db.OpenSharedConnection();
-                    db.Delete<Haandvaerker>(@"DELETE * FROM @0 WHERE HaandvaerkerId= @1", dbo, id);
+                    db.Delete<Haandvaerker>(@"DELETE * FROM @0 WHERE HaandvaerkerId= @1", tableName, id);
                 }
             }
         }
@@ -46,7 +46,7 @@ namespace Delopgaveprojekt.Repositories
                 using (var db = _dbFactory.GetConnection())
                 {
                     db.OpenSharedConnection();
-                    return db.FirstOrDefault<Haandvaerker>(@"SELECT * FROM @0 WHERE HaandvaerkerId= @1", dbo, id);
+                    return db.FirstOrDefault<Haandvaerker>(@"SELECT * FROM @0 WHERE HaandvaerkerId= @1", tableName, id);
                 }
             }
             return null;
@@ -57,7 +57,7 @@ namespace Delopgaveprojekt.Repositories
             using (var db = _dbFactory.GetConnection())
             {
                 db.OpenSharedConnection();
-                return db.Fetch<Haandvaerker>(@"SELECT * FROM @0 ORDER BY HVAnsaettelsedato DESC", dbo);
+                return db.Fetch<Haandvaerker>(@"SELECT * FROM @0 ORDER BY HVAnsaettelsedato DESC", tableName);
             }
         }
 
@@ -68,7 +68,7 @@ namespace Delopgaveprojekt.Repositories
                 using (var db = _dbFactory.GetConnection())
                 {
                     db.OpenSharedConnection();
-                    db.Update<Haandvaerker>(dbo, "HaandvaerkerId", haandvaerker);
+                    db.Update<Haandvaerker>(tableName, "HaandvaerkerId", haandvaerker);
                 }
             }
         }

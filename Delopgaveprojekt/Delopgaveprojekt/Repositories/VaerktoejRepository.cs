@@ -1,4 +1,5 @@
-﻿using Delopgaveprojekt.Models;
+﻿using Delopgaveprojekt.DbFactory;
+using Delopgaveprojekt.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,29 +9,66 @@ namespace Delopgaveprojekt.Repositories
 {
     public class VaerktoejRepository : IVaerktoejRepository
     {
+        private const string tableName = "";
+        private readonly IDbFactory _dbFactory;
+
+        public VaerktoejRepository(IDbFactory dbFactory)
+        {
+            _dbFactory = dbFactory;
+        }
         public void AddVaerktoej(Vaerktoej vaerktoej)
         {
-            throw new NotImplementedException();
+            if (vaerktoej != null)
+            {
+                using (var db = _dbFactory.GetConnection())
+                {
+                    db.OpenSharedConnection();
+                    db.Insert<Vaerktoej>(vaerktoej);
+                }
+            }
         }
-
         public void DeleteVaerktoej(int id)
         {
-            throw new NotImplementedException();
+            if (id != 0)
+            {
+                using (var db = _dbFactory.GetConnection())
+                {
+                    db.OpenSharedConnection();
+                    db.Delete<Vaerktoej>(@"DELETE * FROM @0 WHERE VTId= @1", tableName, id);
+                }
+            }
         }
-
         public Vaerktoej GetById(int id)
         {
-            throw new NotImplementedException();
+            if (id != 0)
+            {
+                using (var db = _dbFactory.GetConnection())
+                {
+                    db.OpenSharedConnection();
+                    return db.FirstOrDefault<Vaerktoej>(@"SELECT * FROM @0 WHERE VTId= @1", tableName, id);
+                }
+            }
+            return null;
         }
-
         public List<Vaerktoej> GetVaerktoejs()
         {
-            throw new NotImplementedException();
+            using (var db = _dbFactory.GetConnection())
+            {
+                db.OpenSharedConnection();
+                return db.Fetch<Vaerktoej>(@"SELECT * FROM @0 ORDER BY VTAnskaffet DESC", tableName);
+            }
         }
 
         public void UpdateVaerktoej(Vaerktoej vaerktoej)
         {
-            throw new NotImplementedException();
+            if (vaerktoej != null)
+            {
+                using (var db = _dbFactory.GetConnection())
+                {
+                    db.OpenSharedConnection();
+                    db.Update<Vaerktoej>(tableName, "VTId", vaerktoej);
+                }
+            }
         }
     }
 }
