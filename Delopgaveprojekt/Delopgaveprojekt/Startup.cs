@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Delopgaveprojekt.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Delopgaveprojekt.DbFactory; 
 
 namespace Delopgaveprojekt
 {
@@ -26,6 +28,11 @@ namespace Delopgaveprojekt
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddScoped<IDbFactory, DbFactory.DbFactory>();
+            services.AddScoped<IHaandvaerkerRepository, HaandvaerkerRepository>();
+            services.AddScoped<IVaerktoejRepository, VaerktoejRepository>();
+            services.AddScoped<IVaerktoejskasseRepository, VaerktoejskasseRepository>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

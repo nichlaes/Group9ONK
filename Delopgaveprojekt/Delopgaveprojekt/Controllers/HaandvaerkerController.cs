@@ -12,12 +12,13 @@ namespace Delopgaveprojekt.Controllers
     public class HaandvaerkerController : ControllerBase
     {
 
-        private HaandvaerkerRepository haandvaerkerRepository;
+        private IHaandvaerkerRepository _haandvaerkerRepository;
         private readonly ILogger<HaandvaerkerController> _logger;
 
-        public HaandvaerkerController(ILogger<HaandvaerkerController> logger)
+        public HaandvaerkerController(ILogger<HaandvaerkerController> logger, IHaandvaerkerRepository haandvaerkerRepository)
         {
             _logger = logger;
+            _haandvaerkerRepository = haandvaerkerRepository; 
         }
 
         // GET: api/<controller>
