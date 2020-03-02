@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Delopgaveprojekt.Repositories
 {
-    interface IHaandvaerkerRepository
+    public interface IHaandvaerkerRepository
     {
         void AddHaandvaerker(Haandvaerker haandvaerker);
         List<Haandvaerker> GetHaandvaerkers();
