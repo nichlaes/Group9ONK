@@ -10,8 +10,8 @@ namespace Delopgaveprojekt.Repositories
     {
         void AddHaandvaerker(Haandvaerker haandvaerker);
         List<Haandvaerker> GetHaandvaerkers();
-        Haandvaerker GetById(int id);
-        void UpdateHaandvaerker(Haandvaerker haandvaerker);
-        void DeleteHaandvaerker(int id);
+        //Haandvaerker GetById(int id);
+        //void UpdateHaandvaerker(Haandvaerker haandvaerker);
+        //void DeleteHaandvaerker(int id);
     }
 }

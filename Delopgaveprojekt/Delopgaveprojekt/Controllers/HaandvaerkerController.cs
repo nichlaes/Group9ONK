@@ -25,35 +25,38 @@ namespace Delopgaveprojekt.Controllers
         [HttpGet]
         public List<Models.Haandvaerker> Get()
         {
+            _haandvaerkerRepository.AddHaandvaerker(new Models.Haandvaerker { HaandvaerkerId=27});
+
+
             return _haandvaerkerRepository.GetHaandvaerkers();
         }
 
         // GET api/<controller>/5
-        [HttpGet("{id}")]
-        public Models.Haandvaerker Get(int id)
-        {
-            return _haandvaerkerRepository.GetById(id);
-        }
+        //[HttpGet("{id}")]
+        //public Models.Haandvaerker Get(int id)
+        //{
+        //    return _haandvaerkerRepository.GetById(id);
+        //}
 
-        // POST api/<controller>
-        [HttpPost]
-        public void Post([FromBody]Models.Haandvaerker hv)
-        {
-            _haandvaerkerRepository.AddHaandvaerker(hv);
-        }
+        //// POST api/<controller>
+        //[HttpPost]
+        //public void Post([FromBody]Models.Haandvaerker hv)
+        //{
+        //    _haandvaerkerRepository.AddHaandvaerker(hv);
+        //}
 
-        // PUT api/<controller>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]Models.Haandvaerker hv)//Hvad præcis skal der ske her???
-        {
-            _haandvaerkerRepository.UpdateHaandvaerker(hv);
-        }
+        //// PUT api/<controller>/5
+        //[HttpPut("{id}")]
+        //public void Put(int id, [FromBody]Models.Haandvaerker hv)//Hvad præcis skal der ske her???
+        //{
+        //    _haandvaerkerRepository.UpdateHaandvaerker(hv);
+        //}
 
-        // DELETE api/<controller>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-            _haandvaerkerRepository.DeleteHaandvaerker(id);
-        }
+        //// DELETE api/<controller>/5
+        //[HttpDelete("{id}")]
+        //public void Delete(int id)
+        //{
+        //    _haandvaerkerRepository.DeleteHaandvaerker(id);
+        //}
     }
 }

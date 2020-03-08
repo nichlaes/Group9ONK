@@ -10,7 +10,7 @@ namespace Delopgaveprojekt.Models
     {
         public Vaerktoejskasse()
         {
-            Vaerktoej = new HashSet<Vaerktoej>();
+            //Vaerktoej = new HashSet<Vaerktoej>();
         }
         [Key]
         public int VTKId { get; set; }
@@ -21,6 +21,6 @@ namespace Delopgaveprojekt.Models
         public string VTKSerienummer { get; set; }
         public string VTKFarve { get; set; }
         public Haandvaerker EjesAfNavigation { get; set; }
-        public HashSet<Vaerktoej> Vaerktoej { get; set; }
+        //public HashSet<Vaerktoej> Vaerktoej { get; set; }
     }
 }

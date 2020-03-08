@@ -10,67 +10,66 @@ namespace Delopgaveprojekt.Repositories
     public class HaandvaerkerRepository : IHaandvaerkerRepository
     {
         private const string tableName = "dbo.Haandvaerker";
-        private readonly IDbFactory _dbFactory;
+        private readonly AppDbContext.AppDbContext _dbContext;
 
-        public HaandvaerkerRepository(IDbFactory dbFactory)
+        public HaandvaerkerRepository(AppDbContext.AppDbContext dbContext)
         {
-            _dbFactory = dbFactory;
+            _dbContext = dbContext;
         }
         public void AddHaandvaerker(Haandvaerker haandvaerker)
         {
             if (haandvaerker != null)
             {
-                using (var db = _dbFactory.GetConnection())
-                {
-                    db.OpenSharedConnection();
-                    db.Insert<Haandvaerker>(haandvaerker);
-                }
-            }
-        }
-        public void DeleteHaandvaerker(int id)
-        {
-            if (id != 0)
-            {
-                using (var db = _dbFactory.GetConnection())
-                {
-                    db.OpenSharedConnection();
-                    db.Delete<Haandvaerker>(@"DELETE * FROM @0 WHERE HaandvaerkerId= @1", tableName, id);
-                }
-            }
-        }
+                _dbContext.Haandvaerkers.Local.Add(haandvaerker);
 
-        public Haandvaerker GetById(int id)
-        {
-            if (id != 0)
-            {
-                using (var db = _dbFactory.GetConnection())
-                {
-                    db.OpenSharedConnection();
-                    return db.FirstOrDefault<Haandvaerker>(@"SELECT * FROM @0 WHERE HaandvaerkerId= @1", tableName, id);
-                }
             }
-            return null;
         }
+        //    public void DeleteHaandvaerker(int id)
+        //    {
+        //        if (id != 0)
+        //        {
+        //            using (var db = _dbContext.GetConnection())
+        //            {
+        //                db.OpenSharedConnection();
+        //                db.Delete<Haandvaerker>(@"DELETE * FROM dbo.Haandvaerker WHERE HaandvaerkerId= @1", tableName, id);
+        //            }
+        //        }
+        //    }
+
+        //    public Haandvaerker GetById(int id)
+        //    {
+        //        if (id != 0)
+        //        {
+        //            using (var db = _dbContext.GetConnection())
+        //            {
+        //                db.OpenSharedConnection();
+        //                return db.FirstOrDefault<Haandvaerker>(@"SELECT * FROM @0 WHERE HaandvaerkerId= @1", tableName, id);
+        //            }
+        //        }
+        //        return null;
+        //    }
 
         public List<Haandvaerker> GetHaandvaerkers()
         {
-            using (var db = _dbFactory.GetConnection())
-            {
-                db.OpenSharedConnection();
-                return db.Fetch<Haandvaerker>(@"SELECT * FROM @0 ORDER BY HVAnsaettelsedato DESC", tableName);
-            }
+            return _dbContext.Haandvaerkers.Local.ToList();
+            //using (var db = _dbContext.GetConnection())
+            //{
+            //    db.OpenSharedConnection();
+            //    return db.Fetch<Haandvaerker>(@"SELECT * FROM dbo.haandvaerker ORDER BY HVAnsaettelsedato DESC");
+            //}
         }
 
-        public void UpdateHaandvaerker(Haandvaerker haandvaerker)
-        {
-            if (haandvaerker != null)
-            {
-                using (var db = _dbFactory.GetConnection())
-                {
-                    db.OpenSharedConnection();
-                    db.Update<Haandvaerker>(tableName, "HaandvaerkerId", haandvaerker);
-                }
-            }
-        }
+        //    public void UpdateHaandvaerker(Haandvaerker haandvaerker)
+        //    {
+        //        if (haandvaerker != null)
+        //        {
+        //            using (var db = _dbContext.GetConnection())
+        //            {
+        //                db.OpenSharedConnection();
+        //                db.Update<Haandvaerker>(tableName, "HaandvaerkerId", haandvaerker);
+        //            }
+        //        }
+        //    }
+        //}
     }
 }
