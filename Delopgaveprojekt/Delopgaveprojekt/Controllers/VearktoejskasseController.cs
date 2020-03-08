@@ -30,7 +30,7 @@ namespace Delopgaveprojekt.Controllers
         }
 
         // GET: api/Vearktoejskasse/5
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}")]
         public Models.Vaerktoejskasse Get(int id)
         {
             return _vaerktoejskasseRepository.GetById(id);

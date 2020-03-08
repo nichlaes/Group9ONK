@@ -9,7 +9,7 @@ namespace Delopgaveprojekt.Repositories
 {
     public class HaandvaerkerRepository : IHaandvaerkerRepository
     {
-        private const string tableName = "";
+        private const string tableName = "dbo.Haandvaerker";
         private readonly IDbFactory _dbFactory;
 
         public HaandvaerkerRepository(IDbFactory dbFactory)

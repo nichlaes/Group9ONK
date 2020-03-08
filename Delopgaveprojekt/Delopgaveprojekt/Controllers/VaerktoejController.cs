@@ -31,7 +31,7 @@ namespace Delopgaveprojekt.Controllers
         }
 
         // GET: api/Vaerktoej/5
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}")]
         public Models.Vaerktoej Get(int id)
         {
             return _vaerktoejRepository.GetById(id);
