@@ -20,7 +20,7 @@ namespace Delopgaveprojekt.Repositories
         {
             if (haandvaerker != null)
             {
-                _dbContext.Haandvaerkers.Local.Add(haandvaerker);
+                _dbContext.Haandvaerkers.Add(haandvaerker);
                 _dbContext.SaveChanges();
 
             }
@@ -52,7 +52,7 @@ namespace Delopgaveprojekt.Repositories
         {
             if (haandvaerker != null)
             {
-                _dbContext.Update(haandvaerker);
+                _dbContext.Haandvaerkers.Update(haandvaerker);
                 _dbContext.SaveChanges();
             }
         }

@@ -26,9 +26,6 @@ namespace Delopgaveprojekt.Controllers
         [HttpGet]
         public List<Models.Haandvaerker> Get()
         {
-            _haandvaerkerRepository.AddHaandvaerker(new Models.Haandvaerker { HaandvaerkerId=27});
-
-
             return _haandvaerkerRepository.GetHaandvaerkers();
         }
 
