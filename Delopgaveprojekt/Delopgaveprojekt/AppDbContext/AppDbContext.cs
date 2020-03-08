@@ -19,7 +19,10 @@ namespace Delopgaveprojekt.AppDbContext
 
         public void LoadDefaultData()
         {
-            Haandvaerkers.Add(new Haandvaerker { HaandvaerkerId = 0, HVAnsaettelsedato = DateTime.Now, HVEfternavn = "durr", HVFagomraade = "kontanthjælp", HVFornavn = "hurr"});
+            List<Vaerktoejskasse> vaerktøj = new List<Vaerktoejskasse>{ new Vaerktoejskasse 
+            { VTKFarve = "grøn" } 
+            };
+            Haandvaerkers.Add(new Haandvaerker { HaandvaerkerId = 0, HVAnsaettelsedato = DateTime.Now, HVEfternavn = "durr", HVFagomraade = "kontanthjælp", HVFornavn = "hurr", Vaerktoejskasse=vaerktøj.ToHashSet() });
             Vaerktoejs.Add(new Vaerktoej { VTId = 0, VTAnskaffet = DateTime.Now, VTSerienr = "", VTModel = "test", VTType = "test", VTFabrikat = "" });
         }
 

@@ -14,6 +14,7 @@ using Microsoft.Extensions.Logging;
 using Delopgaveprojekt.DbFactory;
 using Delopgaveprojekt.AppDbContext;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace Delopgaveprojekt
 {
@@ -40,7 +41,7 @@ namespace Delopgaveprojekt
                 }
             );
             //services.AddSingleton<AppDbContext.AppDbContext>();
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             //services.AddScoped<IDbFactory, DbFactory.DbFactory>();
             services.AddScoped<IHaandvaerkerRepository, HaandvaerkerRepository>();
             //services.AddScoped<IVaerktoejRepository, VaerktoejRepository>();

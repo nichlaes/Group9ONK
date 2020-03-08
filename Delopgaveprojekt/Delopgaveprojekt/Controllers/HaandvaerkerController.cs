@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Delopgaveprojekt.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace Delopgaveprojekt.Controllers
 {
