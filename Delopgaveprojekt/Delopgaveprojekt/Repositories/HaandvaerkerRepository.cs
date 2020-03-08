@@ -21,55 +21,41 @@ namespace Delopgaveprojekt.Repositories
             if (haandvaerker != null)
             {
                 _dbContext.Haandvaerkers.Local.Add(haandvaerker);
+                _dbContext.SaveChanges();
 
             }
         }
-        //    public void DeleteHaandvaerker(int id)
-        //    {
-        //        if (id != 0)
-        //        {
-        //            using (var db = _dbContext.GetConnection())
-        //            {
-        //                db.OpenSharedConnection();
-        //                db.Delete<Haandvaerker>(@"DELETE * FROM dbo.Haandvaerker WHERE HaandvaerkerId= @1", tableName, id);
-        //            }
-        //        }
-        //    }
+        public void DeleteHaandvaerker(Haandvaerker hv)
+        {
+            if (hv != null)
+            {
+                _dbContext.Haandvaerkers.Remove(hv);
+                _dbContext.SaveChanges();
+            }
+        }
 
-        //    public Haandvaerker GetById(int id)
-        //    {
-        //        if (id != 0)
-        //        {
-        //            using (var db = _dbContext.GetConnection())
-        //            {
-        //                db.OpenSharedConnection();
-        //                return db.FirstOrDefault<Haandvaerker>(@"SELECT * FROM @0 WHERE HaandvaerkerId= @1", tableName, id);
-        //            }
-        //        }
-        //        return null;
-        //    }
+        public Haandvaerker GetById(int id)
+        {
+            if (id != 0)
+            {
+                return _dbContext.Haandvaerkers.Find(id);
+            }
+            return null;
+        }
 
         public List<Haandvaerker> GetHaandvaerkers()
         {
-            return _dbContext.Haandvaerkers.Local.ToList();
-            //using (var db = _dbContext.GetConnection())
-            //{
-            //    db.OpenSharedConnection();
-            //    return db.Fetch<Haandvaerker>(@"SELECT * FROM dbo.haandvaerker ORDER BY HVAnsaettelsedato DESC");
-            //}
+            return _dbContext.Haandvaerkers.ToList();
         }
 
-        //    public void UpdateHaandvaerker(Haandvaerker haandvaerker)
-        //    {
-        //        if (haandvaerker != null)
-        //        {
-        //            using (var db = _dbContext.GetConnection())
-        //            {
-        //                db.OpenSharedConnection();
-        //                db.Update<Haandvaerker>(tableName, "HaandvaerkerId", haandvaerker);
-        //            }
-        //        }
-        //    }
-        //}
+        public void UpdateHaandvaerker(Haandvaerker haandvaerker)
+        {
+            if (haandvaerker != null)
+            {
+                _dbContext.Update(haandvaerker);
+                _dbContext.SaveChanges();
+            }
+        }
     }
+}
 }
