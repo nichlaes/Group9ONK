@@ -9,7 +9,6 @@ namespace Delopgaveprojekt.Repositories
 {
     public class HaandvaerkerRepository : IHaandvaerkerRepository
     {
-        private const string tableName = "dbo.Haandvaerker";
         private readonly AppDbContext.AppDbContext _dbContext;
 
         public HaandvaerkerRepository(AppDbContext.AppDbContext dbContext)
