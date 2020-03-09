@@ -19,6 +19,7 @@ namespace Delopgaveprojekt.Repositories
             if (vaerktoejskasse != null)
             {
                 _dbContext.Vaerktoejskasses.Add(vaerktoejskasse);
+                _dbContext.SaveChanges();
             }
         }
 
@@ -27,6 +28,7 @@ namespace Delopgaveprojekt.Repositories
             if (vk!=null)
             {
                 _dbContext.Vaerktoejskasses.Remove(vk);
+                _dbContext.SaveChanges();
             }
         }
 
@@ -49,6 +51,7 @@ namespace Delopgaveprojekt.Repositories
             if (vaerktoejskasse != null)
             {
                 _dbContext.Vaerktoejskasses.Update(vaerktoejskasse);
+                _dbContext.SaveChanges();
             }
         }
     }
