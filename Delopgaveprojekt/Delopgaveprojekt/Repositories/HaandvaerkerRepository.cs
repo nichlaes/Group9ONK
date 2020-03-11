@@ -44,7 +44,22 @@ namespace Delopgaveprojekt.Repositories
 
         public List<Haandvaerker> GetHaandvaerkers()
         {
-            return _dbContext.Haandvaerkers.ToList();
+            var haandvaerkers = new List<Haandvaerker>();
+            try
+            {
+                haandvaerkers= _dbContext.Haandvaerkers.ToList();
+            }
+            catch(Exception e)
+            {
+                haandvaerkers.Add(new Haandvaerker 
+                { 
+                    HaandvaerkerId = 0,
+                    HVAnsaettelsedato = DateTime.Now, 
+                    HVFornavn = e.Message, 
+                    HVEfternavn = e.InnerException.ToString() 
+                });
+            }
+            return haandvaerkers;
         }
 
         public void UpdateHaandvaerker(Haandvaerker haandvaerker)
