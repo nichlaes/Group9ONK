@@ -9,33 +9,27 @@ namespace Delopgaveprojekt.Repositories
 {
     public class HaandvaerkerRepository : IHaandvaerkerRepository
     {
-        private const string tableName = "";
-        private readonly IDbFactory _dbFactory;
+        private readonly AppDbContext.AppDbContext _dbContext;
 
-        public HaandvaerkerRepository(IDbFactory dbFactory)
+        public HaandvaerkerRepository(AppDbContext.AppDbContext dbContext)
         {
-            _dbFactory = dbFactory;
+            _dbContext = dbContext;
         }
         public void AddHaandvaerker(Haandvaerker haandvaerker)
         {
             if (haandvaerker != null)
             {
-                using (var db = _dbFactory.GetConnection())
-                {
-                    db.OpenSharedConnection();
-                    db.Insert<Haandvaerker>(haandvaerker);
-                }
+                _dbContext.Haandvaerkers.Add(haandvaerker);
+                _dbContext.SaveChanges();
+
             }
         }
-        public void DeleteHaandvaerker(int id)
+        public void DeleteHaandvaerker(Haandvaerker hv)
         {
-            if (id != 0)
+            if (hv != null)
             {
-                using (var db = _dbFactory.GetConnection())
-                {
-                    db.OpenSharedConnection();
-                    db.Delete<Haandvaerker>(@"DELETE * FROM @0 WHERE HaandvaerkerId= @1", tableName, id);
-                }
+                _dbContext.Haandvaerkers.Remove(hv);
+                _dbContext.SaveChanges();
             }
         }
 
@@ -43,34 +37,40 @@ namespace Delopgaveprojekt.Repositories
         {
             if (id != 0)
             {
-                using (var db = _dbFactory.GetConnection())
-                {
-                    db.OpenSharedConnection();
-                    return db.FirstOrDefault<Haandvaerker>(@"SELECT * FROM @0 WHERE HaandvaerkerId= @1", tableName, id);
-                }
+                return _dbContext.Haandvaerkers.Find(id);
             }
             return null;
         }
 
         public List<Haandvaerker> GetHaandvaerkers()
         {
-            using (var db = _dbFactory.GetConnection())
+            var haandvaerkers = new List<Haandvaerker>();
+            try
             {
-                db.OpenSharedConnection();
-                return db.Fetch<Haandvaerker>(@"SELECT * FROM @0 ORDER BY HVAnsaettelsedato DESC", tableName);
+                haandvaerkers= _dbContext.Haandvaerkers.ToList();
             }
+            catch(Exception e)
+            {
+                haandvaerkers.Add(new Haandvaerker 
+                { 
+                    HaandvaerkerId = 0,
+                    HVAnsaettelsedato = DateTime.Now, 
+                    HVFornavn = "Kunne ikke tilgå database", 
+                    HVEfternavn = e.InnerException.ToString(),
+                    HVFagomraade = e.Message
+                });
+            }
+            return haandvaerkers;
         }
 
         public void UpdateHaandvaerker(Haandvaerker haandvaerker)
         {
             if (haandvaerker != null)
             {
-                using (var db = _dbFactory.GetConnection())
-                {
-                    db.OpenSharedConnection();
-                    db.Update<Haandvaerker>(tableName, "HaandvaerkerId", haandvaerker);
-                }
+                _dbContext.Haandvaerkers.Update(haandvaerker);
+                _dbContext.SaveChanges();
             }
         }
     }
 }
+

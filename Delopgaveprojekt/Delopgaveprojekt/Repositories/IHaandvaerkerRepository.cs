@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Delopgaveprojekt.Repositories
 {
-    interface IHaandvaerkerRepository
+    public interface IHaandvaerkerRepository
     {
         void AddHaandvaerker(Haandvaerker haandvaerker);
         List<Haandvaerker> GetHaandvaerkers();
         Haandvaerker GetById(int id);
         void UpdateHaandvaerker(Haandvaerker haandvaerker);
-        void DeleteHaandvaerker(int id);
+        void DeleteHaandvaerker(Haandvaerker haandvaerker);
     }
 }

@@ -13,6 +13,10 @@ namespace Delopgaveprojekt.DbFactory
         private SqlConnection con = new SqlConnection(Constants.Constants.sqlConnectionString);
         public IDatabase GetConnection()
         {
+            con.Open();
+            //Database db=new Database(con);
+            //db.OpenSharedConnection();
+
             return new Database(con);
         }
     }

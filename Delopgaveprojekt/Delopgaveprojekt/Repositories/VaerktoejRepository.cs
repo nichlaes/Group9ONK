@@ -1,5 +1,4 @@
-﻿using Delopgaveprojekt.DbFactory;
-using Delopgaveprojekt.Models;
+﻿using Delopgaveprojekt.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,65 +8,44 @@ namespace Delopgaveprojekt.Repositories
 {
     public class VaerktoejRepository : IVaerktoejRepository
     {
-        private const string tableName = "";
-        private readonly IDbFactory _dbFactory;
+        private readonly AppDbContext.AppDbContext _dbContext;
 
-        public VaerktoejRepository(IDbFactory dbFactory)
+        public VaerktoejRepository(AppDbContext.AppDbContext context)
         {
-            _dbFactory = dbFactory;
+            _dbContext = context;
         }
         public void AddVaerktoej(Vaerktoej vaerktoej)
         {
-            if (vaerktoej != null)
-            {
-                using (var db = _dbFactory.GetConnection())
-                {
-                    db.OpenSharedConnection();
-                    db.Insert<Vaerktoej>(vaerktoej);
-                }
-            }
+            _dbContext.Vaerktoejs.Add(vaerktoej);
+            _dbContext.SaveChanges();
         }
-        public void DeleteVaerktoej(int id)
+        public void DeleteVaerktoej(Vaerktoej vt)
         {
-            if (id != 0)
+            if (vt != null)
             {
-                using (var db = _dbFactory.GetConnection())
-                {
-                    db.OpenSharedConnection();
-                    db.Delete<Vaerktoej>(@"DELETE * FROM @0 WHERE VTId= @1", tableName, id);
-                }
+                _dbContext.Vaerktoejs.Remove(vt);
+                _dbContext.SaveChanges();
             }
         }
         public Vaerktoej GetById(int id)
         {
             if (id != 0)
             {
-                using (var db = _dbFactory.GetConnection())
-                {
-                    db.OpenSharedConnection();
-                    return db.FirstOrDefault<Vaerktoej>(@"SELECT * FROM @0 WHERE VTId= @1", tableName, id);
-                }
+                _dbContext.Vaerktoejs.Find(id);
             }
             return null;
         }
         public List<Vaerktoej> GetVaerktoejs()
         {
-            using (var db = _dbFactory.GetConnection())
-            {
-                db.OpenSharedConnection();
-                return db.Fetch<Vaerktoej>(@"SELECT * FROM @0 ORDER BY VTAnskaffet DESC", tableName);
-            }
+            return _dbContext.Vaerktoejs.ToList();
         }
 
         public void UpdateVaerktoej(Vaerktoej vaerktoej)
         {
             if (vaerktoej != null)
             {
-                using (var db = _dbFactory.GetConnection())
-                {
-                    db.OpenSharedConnection();
-                    db.Update<Vaerktoej>(tableName, "VTId", vaerktoej);
-                }
+                _dbContext.Vaerktoejs.Update(vaerktoej);
+                _dbContext.SaveChanges();
             }
         }
     }

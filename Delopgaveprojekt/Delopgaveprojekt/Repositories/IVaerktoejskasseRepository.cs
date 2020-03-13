@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Delopgaveprojekt.Repositories
 {
-    interface IVaerktoejskasseRepository
+    public interface IVaerktoejskasseRepository
     {
         void AddVaerktoejskasse(Vaerktoejskasse vaerktoejskasse);
         List<Vaerktoejskasse> GetVaerktoejskasses();
         Vaerktoejskasse GetById(int id);
         void UpdateVaerktoejskasse(Vaerktoejskasse vaerktoejskasse);
-        void DeleteVaerktoejskasse(int id);
+        void DeleteVaerktoejskasse(Vaerktoejskasse vk);
     }
 }

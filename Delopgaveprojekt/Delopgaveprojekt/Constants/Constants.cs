@@ -7,6 +7,6 @@ namespace Delopgaveprojekt.Constants
 {
     public class Constants
     {
-        public const string sqlConnectionString = "";
-    }
+        public const string sqlConnectionString = "server=laptop-2vtij9g0; database=ITONK_ass1_gr9;";// providerName=System.Data.sqlClient";
+    }   
 }

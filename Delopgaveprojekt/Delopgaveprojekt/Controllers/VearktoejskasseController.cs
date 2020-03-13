@@ -13,44 +13,48 @@ namespace Delopgaveprojekt.Controllers
     [ApiController]
     public class VearktoejskasseController : ControllerBase
     {
-        private VaerktoejskasseRepository vaerktoejskasseRepository;
+        private IVaerktoejskasseRepository _vaerktoejskasseRepository;
         private readonly ILogger<VearktoejskasseController> _logger;
 
-        public VearktoejskasseController(ILogger<VearktoejskasseController> logger)
+        public VearktoejskasseController(ILogger<VearktoejskasseController> logger, IVaerktoejskasseRepository vaerktoejskasseRepository)
         {
+            _vaerktoejskasseRepository = vaerktoejskasseRepository;
             _logger = logger;
         }
 
         // GET: api/Vearktoejskasse
         [HttpGet]
-        public IEnumerable<string> Get()
+        public List<Models.Vaerktoejskasse> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _vaerktoejskasseRepository.GetVaerktoejskasses();
         }
 
         // GET: api/Vearktoejskasse/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("{id}")]
+        public Models.Vaerktoejskasse Get(int id)
         {
-            return "value";
+            return _vaerktoejskasseRepository.GetById(id);
         }
 
         // POST: api/Vearktoejskasse
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Models.Vaerktoejskasse vk)
         {
+            _vaerktoejskasseRepository.AddVaerktoejskasse(vk);
         }
 
         // PUT: api/Vearktoejskasse/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, [FromBody] Models.Vaerktoejskasse vk)
         {
+            _vaerktoejskasseRepository.UpdateVaerktoejskasse(vk);
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete(Models.Vaerktoejskasse vk)
         {
+            _vaerktoejskasseRepository.DeleteVaerktoejskasse(vk);
         }
     }
 }
