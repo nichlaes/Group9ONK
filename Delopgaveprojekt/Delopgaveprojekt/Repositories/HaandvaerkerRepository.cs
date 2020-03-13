@@ -55,8 +55,9 @@ namespace Delopgaveprojekt.Repositories
                 { 
                     HaandvaerkerId = 0,
                     HVAnsaettelsedato = DateTime.Now, 
-                    HVFornavn = e.Message, 
-                    HVEfternavn = e.InnerException.ToString() 
+                    HVFornavn = "Kunne ikke tilgå database", 
+                    HVEfternavn = e.InnerException.ToString(),
+                    HVFagomraade = e.Message
                 });
             }
             return haandvaerkers;
@@ -72,4 +73,4 @@ namespace Delopgaveprojekt.Repositories
         }
     }
 }
-}
+

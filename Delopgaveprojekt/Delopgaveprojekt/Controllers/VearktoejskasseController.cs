@@ -52,9 +52,9 @@ namespace Delopgaveprojekt.Controllers
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete(Models.Vaerktoejskasse vk)
         {
-            _vaerktoejskasseRepository.DeleteVaerktoejskasse(id);
+            _vaerktoejskasseRepository.DeleteVaerktoejskasse(vk);
         }
     }
 }

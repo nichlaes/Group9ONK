@@ -27,7 +27,13 @@ namespace Delopgaveprojekt.Controllers
         [HttpGet]
         public List<Models.Vaerktoej> Get()
         {
-            return _vaerktoejRepository.GetVaerktoejs();
+            //return _vaerktoejRepository.GetVaerktoejs();
+            return new List<Models.Vaerktoej>{ new Models.Vaerktoej {
+            VTAnskaffet = DateTime.Now,
+            VTFabrikat = "Apollo Productions",
+            VTId = 42,
+            VTModel = "Ja",
+            } };
         }
 
         // GET: api/Vaerktoej/5
@@ -53,9 +59,9 @@ namespace Delopgaveprojekt.Controllers
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete(Models.Vaerktoej vt)
         {
-            _vaerktoejRepository.DeleteVaerktoej(id);
+            _vaerktoejRepository.DeleteVaerktoej(vt);
         }
     }
 }
