@@ -1,0 +1,51 @@
+<div class="container">
+    <h1>Værktøjkasse</h1>
+
+    <form (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label for="VTKId">VTKId</label>
+            <input type="text" class="form-control" id="VTKId" [(ngModel)]="model.VTKId" name="VTKId">
+        </div>
+
+        <div class="form-group">
+            <label for="VTKAnskaffet">VTKAnskaffet</label>
+            <input type="text" class="form-control" [(ngModel)]="model.VTKAnskaffet" name="VTKAnskaffet">
+        </div>
+
+
+        <div class="form-group">
+            <label for="VTKFabrikat">VTKFabrikat</label>
+            <input type="number" class="form-control" [(ngModel)]="model.VTKFabrikat" name="VTKFabrikat">
+        </div>
+
+        <div class="form-group">
+            <label for="VTKModel">VTKModel</label>
+            <input type="text" class="form-control" [(ngModel)]="model.VTKModel" name="VTKModel">
+        </div>
+
+
+        <div class="form-group">
+            <label for="VTKSerienummer">VTKSerienummer</label>
+            <input type="text" class="form-control" [(ngModel)]="model.VTKSerienummer" name="VTKSerienummer">
+        </div>
+
+
+        <div class="form-group">
+            <label for="VTKFarve">VTKFarve</label>
+            <input type="text" class="form-control" [(ngModel)]="model.VTKFarve" name="VTKFarve">
+        </div>
+
+        <div class="form-group">
+            <label for="VTKEjesAf">VTKEjesAf</label>
+            <input type="text" class="form-control" [(ngModel)]="model.VTKEjesAf" name="VTKEjesAf">
+        </div>
+
+        <!-- <div class="form-group" *ngFor="let tool of model.Vaerktoej">
+            <label for="Vaerktoej">Vaerktoej</label>
+            <input type="text" class="form-control" [(ngModel)]="tool.VTId" name="VTId">
+        </div> -->
+
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>

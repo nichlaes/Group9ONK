@@ -1,9 +1,46 @@
 <div class="container">
-    <h1>Hero Form</h1>
-    <form #heroForm="ngForm">
+    <h1>Værktøj</h1>
+
+    <form (ngSubmit)="onSubmit()">
+
         <div class="form-group">
             <label for="VTId">VTId</label>
-            <input type="text" class="form-control" id="VTId" required [(ngModel)]="tool.VTId" name="VTId">
+            <input type="text" class="form-control" id="VTId" [(ngModel)]="model.VTId" name="VTId">
+        </div>
+
+        <div class="form-group">
+            <label for="VTAnskaffet">VTAnskaffet</label>
+            <input type="text" class="form-control" [(ngModel)]="model.VTAnskaffet" name="VTAnskaffet">
+        </div>
+
+
+        <div class="form-group">
+            <label for="VTFabrikat">VTFabrikat</label>
+            <input type="number" class="form-control" [(ngModel)]="model.VTFabrikat" name="VTFabrikat">
+        </div>
+
+
+        <div class="form-group">
+            <label for="VTModel">VTModel</label>
+            <input type="text" class="form-control" [(ngModel)]="model.VTModel" name="VTModel">
+        </div>
+
+
+        <div class="form-group">
+            <label for="VTSerienummer">VTSerienummer</label>
+            <input type="text" class="form-control" [(ngModel)]="model.VTSerienummer" name="VTSerienummer">
+        </div>
+
+
+        <div class="form-group">
+            <label for="VTType">VTType</label>
+            <input type="text" class="form-control" [(ngModel)]="model.VTType" name="VTType">
+        </div>
+
+
+        <div class="form-group">
+            <label for="LiggerIvtk">LiggerIvtk</label>
+            <input type="text" class="form-control" [(ngModel)]="model.LiggerIvtk" name="LiggerIvtk">
         </div>
 
         <!-- <div class="form-group">
@@ -19,6 +56,5 @@
         </div> -->
 
         <button type="submit" class="btn btn-success">Submit</button>
-
     </form>
 </div>

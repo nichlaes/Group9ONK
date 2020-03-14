@@ -1,0 +1,115 @@
+<!-- <div class="container">
+    <div>
+        <div>
+            <h3><i class="fas fa-hammer"></i>Værktøj</h3>
+            <ul>
+                <li *ngFor="let tool of tools">
+                    <a [routerLink]="['tool',tool.VTId]">Værktøj Id: {{ tool.VTId }}</a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h3><i class="fas fa-tools"></i>Værktøjskasser </h3>
+            <ul>
+                <li *ngFor="let toolbox of toolboxes">
+                    <a [routerLink]="['toolbox',toolbox.VTKId]"> Værktøjkasse Id: {{ toolbox.VTKId }} </a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h3><i class="fas fa-hard-hat"></i> Håndværker</h3>
+            <ul>
+                <li *ngFor="let man of craftsmen">
+                    <a>Håndværker Id: {{ man.HaandvaerkerId }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div> -->
+
+<h1>
+    <i class="fas fa-hammer"></i>
+    Værktøj
+</h1>
+<table>
+    <tr class=" header">
+        <th>
+            ID:
+        </th>
+        <th>
+            Anskaffet:
+        </th>
+        <th>
+            Ligger i Værktøjkasse(ID):
+        </th>
+    </tr>
+    <tr *ngFor="let tool of tools">
+        <td>
+            <a [routerLink]=" ['tool',tool.VTId]">{{tool.VTId}}</a>
+        </td>
+        <td>
+            {{tool.VTAnskaffet}}
+        </td>
+        <td>
+            {{tool.LiggerIvtk}}
+        </td>
+    </tr>
+</table>
+
+<h1>
+    <i class="fas fa-tools"></i>
+    Værktøjskasser
+</h1>
+<table>
+    <tr class="header">
+        <th>
+            ID:
+        </th>
+        <th>
+            Anskaffet:
+        </th>
+        <th>
+            Ejes af Håndværker(ID):
+        </th>
+    </tr>
+    <tr *ngFor="let tbx of toolboxes">
+        <td>
+            <a [routerLink]="['toolbox',tbx.VTKId]"> {{ tbx.VTKId }} </a>
+        </td>
+        <td>
+            {{tbx.VTKAnskaffet}}
+        </td>
+        <td>
+            {{tbx.VTKEjesAf}}
+        </td>
+    </tr>
+</table>
+
+<h1>
+    <i class="fas fa-hard-hat"></i>
+    Håndværker
+</h1>
+<table>
+    <tr class="header">
+        <th>
+            ID:
+        </th>
+        <th>
+            Ansættelsesdato:
+        </th>
+        <th>
+            Fagområde:
+        </th>
+    </tr>
+    <tr *ngFor="let man of craftsmen">
+        <td>
+            <a [routerLink]=" ['craftsman', man.HaandvaerkerId]">{{man.HaandvaerkerId}} </a>
+        </td>
+        <td>
+            {{man.HVAnsaettelsedato}}
+        </td>
+        <td>
+            {{man.HVFagomraade}}
+        </td>
+    </tr>
+</table>

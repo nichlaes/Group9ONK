@@ -5,7 +5,7 @@ export class Tool {
         public VTAnskaffet: Date,
         public VTFabrikat: string,
         public VTModel: string,
-        public VTSerienr: string,
+        public VTSerienummer: string,
         public VTType: string,
         public LiggerIvtk?: number
     ) { }

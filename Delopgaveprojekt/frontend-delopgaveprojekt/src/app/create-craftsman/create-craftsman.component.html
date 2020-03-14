@@ -1,0 +1,47 @@
+<div class="container">
+    <h1>Håndværker</h1>
+
+    <form (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label for="HaandvaerkerId">HaandvaerkerId</label>
+            <input type="number" class="form-control" id="HaandvaerkerId" [(ngModel)]="model.HaandvaerkerId"
+                name="VTKId">
+        </div>
+
+        <div class="form-group">
+            <label for="HVAnsaettelsedato">HVAnsaettelsedato</label>
+            <input type="text" class="form-control" [(ngModel)]="model.HVAnsaettelsedato" name="HVAnsaettelsedato">
+        </div>
+
+
+        <div class="form-group">
+            <label for="HVEfternavn">HVEfternavn</label>
+            <input type="text" class="form-control" [(ngModel)]="model.HVEfternavn" name="HVEfternavn">
+        </div>
+
+        <div class="form-group">
+            <label for="HVFagomraade">HVFagomraade</label>
+            <input type="text" class="form-control" [(ngModel)]="model.HVFagomraade" name="HVFagomraade">
+        </div>
+
+
+        <div class="form-group">
+            <label for="HVFornavn">HVFornavn</label>
+            <input type="text" class="form-control" [(ngModel)]="model.HVFornavn" name="HVFornavn">
+        </div>
+
+        <div class="form-group">
+            <select id="Vaerktoejskasse" (ngModel)="model.Vaerktoejskasse" multiple>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>

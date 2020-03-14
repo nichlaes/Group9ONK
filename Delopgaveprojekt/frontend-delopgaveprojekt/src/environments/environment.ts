@@ -3,8 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  ENDPOINT: {
+    TOOL: "https//localhost:5000/tool",
+    TOOLBOX: "https//localhost:5000/toolbox",
+    CRAFTSMAN: "https//localhost:5000/craftsman"
+  }
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file
